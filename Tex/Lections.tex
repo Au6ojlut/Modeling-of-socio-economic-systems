@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper,titlepage,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[OT1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Функциональный анализ}
+
+%%% COMMANDS
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+%%% THEOREMS
+\newtheoremstyle{break}{3pt}{3pt}{\itshape}{}{\bfseries}{.}{\newline}{}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Теорема}
+
+\theoremstyle{break}
+\newtheorem*{theorem-break}{Теорема}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
+
+\theoremstyle{remark}
+\newtheorem*{example}{Пример}
+
+\theoremstyle{plain}
+\newtheorem*{lemma}{Лемма}
+
+\theoremstyle{plain}
+\newtheorem*{corollary}{Следствие}
+
+%%% MISC
+\setcounter{tocdepth}{1}
+\def\labelitemi{--}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\sloppy
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+%%% DOCUMENT
+\begin{document}
+
+%%% TITLE PAGE
+\begin{titlepage}
+\begin{center}
+
+\vfill
+
+Санкт-Петербургский государственный университет\\
+\ \\
+
+\vfill
+
+{\large\bf Моделирование социально-экономических систем\\}
+\ \\
+Лекции 
+\vfill
+
+\hfill\vbox
+{
+\hbox{Доцент кафедры математического моделирования}
+\hbox{энергетических систем, кандидат физ.-мат. наук}
+\hbox{Александр Юрьевич Крылатов}
+}
+
+\vfill
+
+Санкт-Петербург, 2016
+\end{center}
+\end{titlepage}
+
+
+\tableofcontents
+
+\chapter{Балансовая модель производства}
+
+\section{Модель <<затрата - выпуск>> (англ. input - output)}
+
+\chapter{Линейное программирование}
+
+
+\chapter{Нелинейное программирование(? штука)}
+\end{document}
