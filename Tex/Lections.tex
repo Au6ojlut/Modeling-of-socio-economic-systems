@@ -150,14 +150,14 @@ $x_j \geq 0 \qquad \forall j$
 \begin{definition}
 Квадратная матрица $A$, такая, что $A_{ij} \geq 0 \qquad \forall i,j$, называется продуктивной, если существует хотя бы один такой вектор $\bar{x} > 0$, что $(E-A)\bar{x} > 0$.
 \end{definition}
-\begin{theorem}(О существовании и единственности решение балансовой системы уравнений)
+\begin{theorem}(О существовании и единственности решение балансовой системы уравнений)\label{t1.1}
 Матрица $A$ продуктивна, тогда и только тогда, когда существует, единственно и неотрицательно решение системы $(E-A)x=y$ для любого  вектора $y \geq 0$.
 \end{theorem}
 \begin{proof}
 \textit{Достаточность.}
 
 Рассмотрим $\bar{y} > 0$ и $\bar{x} \geq 0$. $(E-A)\bar{x} = \bar{y} > 0 \quad \rightarrow \quad \bar{x} > A\bar{x} \quad \rightarrow \quad \bar{x} \geq 0$. $(E-A)\bar{x} > 0$ 
-\begin{lemma}
+\begin{lemma}\label{l1.1}
 Если $A$ -- продуктивна, то
 $$\lim_{\nu \to \infty} A^{\nu} = 0 \qquad \nu \in N$$
 
@@ -173,7 +173,7 @@ $$\lambda^{\nu} \bar{x} > A^{\nu} \bar{x} \geq 0.$$
 Так как $\lambda^{\nu} \to 0$ при $ \nu \to \infty$, то $A^{\nu} \to 0 $ при $ \nu \to \infty.$
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{l1.2}
 Если $A$ -- продуктивна и существует такой вектор $\bar{x}$, что выполняется $\bar{x} \geq A\bar{x}$, то $\bar{x} \geq 0.$
 \end{lemma}
 \begin{proof}
@@ -183,7 +183,7 @@ $$\bar{x} \geq A^{\nu} \bar{x} \to 0 \text{, при } \nu \to \infty$$
 $$\bar{x} \geq 0$$
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{l1.3}
 Если $A$ -- продуктивна, то $det(E-A) \neq 0.$
 \end{lemma}
 \begin{proof}
@@ -202,9 +202,64 @@ $$(E-A)x \geq 0$$
 В силу Леммы 1.2 $x \geq 0.$
 \end{proof}
 
-\begin{theorem}
-
+\begin{theorem}\label{t1.2}
+Матрица $A \geq 0$ -- продуктивна тогда и только тогда, когда $S = (E-A)^{-1}$ существует и не отрицательна.
 \end{theorem}
+
+\begin{proof}
+
+\textit{Необходимость.}
+
+$S = \{ \sigma_{ij} \}_{i}^{j}$
+
+Рассмотрим $(E-A)x = u_j$, где
+
+$u_j = \left(\begin{array}{crl}
+0\\ ... \\1\\...\\ 0
+\end{array}\right)$ (Единица на $j$-ом месте)
+
+В силу теоремы ($\ref{t1.1}$) $(E-A)x=y$ имеет единственное решение $x=Sy$, следовательно $\sigma_{ij} \geq 0 \quad \forall i = \overline{1,n}$.
+
+\textit{Достаточность.}
+
+Рассмотрим $\hat{x}: \quad (E-A)^{-1}u$
+
+$u = \left(\begin{array}{crl}
+1\\ ... \\1\\...\\ 1
+\end{array}\right)$
+
+$\hat{x} = \sum\limits_{j=1}^{n} \sigma_{ij}$
+
+Так как $|E-A| \neq 0, (E-A)^{-1}$ -- ни один столбец не состоит из нулей. Тогда 
+
+$\hat{x} = \sum\limits_{j=1}^{n} \sigma_{ij} > 0$
+
+$(E-A)\hat{x}=u>0$
+
+$S=(E-A)^{-1}$
+\end{proof}
+
+\begin{definition}
+Компоненты матрицы $S$ называются коэффициентами полезных затрат, а $S$ -- матрица коэффициентов полных затрат.
+
+$x = Sy$
+
+\end{definition}
+
+
+Составление плана не ясно, нужны комментарии.
+
+\begin{theorem}
+Если $A$ продуктивная, то $\lim\limits_{\nu \to \infty} y_{\nu} = (E-A)^{-1}y_0$.
+\end{theorem}
+
+\begin{proof}
+$y_{\nu} = (E-A)^{-1}y_0 - (E-A)^{-1}A^{\nu+1}y_0 \to (E-A)^{-1}y_0$
+\end{proof}
+
+
+
+Пример про составление плана с двумя определениями не понятно. Спросить.
 \chapter{Линейное программирование}
 
 
