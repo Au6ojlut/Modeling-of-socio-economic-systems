@@ -262,7 +262,166 @@ $y_{\nu} = (E-A)^{-1}y_0 - (E-A)^{-1}A^{\nu+1}y_0 \to (E-A)^{-1}y_0$
 Пример про составление плана с двумя определениями не понятно. Спросить.
 \chapter{Линейное программирование}
 
+[LECTION N4]
 
+[Здесь могла быть ваша реклама]
+$F = \sum\limits_{j=1}^m F^j$ -- имеется $m$ групп пользователей,
+$F^j$ -- поток группы.\\ 
+Каждая группа стремиться минимизировать совой поток:
+\begin{gather*}
+\min\limits_{f^j} \sum\limits_{i=1}^n t_i(f_i)f_i^j, \qquad f^j = (f_1^j, f_2^j, \dots, f_n^j) - \text{стратегия} \\
+\sum\limits_{i=1}^n f_i^j = F^j, \qquad f_i = \sum\limits_{j=1}^m f_i^j
+\end{gather*}
+
+\begin{equation*}
+\frac{\partial L^j}{\partial f_i^j} = t_i(f_i)+ \frac{\partial t_i(f_i)}{\partial f_i^j}f_i^j - \omega^j-\eta_i^j = 0
+\end{equation*}
+
+\begin{equation*}
+t_i(f_i) + \frac{\partial t_i(f_i)}{\partial f_i^j}f_i^j \begin{cases} = \omega^j & если f_i^j > 0\\
+> \omega^j & если f_i^j = 0 
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+t_i(f_i) = a_i + b_if_i
+\end{equation*}
+
+\begin{equation*}
+a_i+b_i \sum\limits_{j=1}^m f_i^j + b_i f_i^j \begin{cases} = \omega^j & если f_i^j > 0\\
+\geq \omega^j & если f_i^j = 0 
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+f_i^1+ \dots + 2f_i^j+ \dots +  f_i^m  \begin{cases} = \frac{\omega^j -a_i}{b_i} & если f_i^j > 0\\
+\geq \frac{\omega^j -a_i}{b} & если f_i^j = 0 \text{!!!!!!!!!!!}
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+\begin{pmatrix}
+2 & 1 & \cdots & 1\\
+1 & 2 & \cdots & 1\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & 1 & \cdots & 2 
+\end{pmatrix}
+\begin{pmatrix}
+f_i^1 \\ f_i^2 \\ \vdots\\ f_i^m 
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\omega^1 - a_i}{b_i} \\ \frac{\omega^2 - a_i}{b_i} \\ \vdots \\ \frac{\omega^m - a_i}{b_i}
+\end{pmatrix}
+\end{equation*}
+Следовательно
+\begin{equation*}
+\begin{pmatrix}
+f_i^1 \\ f_i^2 \\ \vdots\\ f_i^m 
+\end{pmatrix} 
+=\begin{pmatrix}
+\frac{m}{m+1} & \frac{-1}{m+1} & \cdots & \frac{-1}{m+1} \\
+\frac{-1}{m+1} & \frac{m}{m+1} & \cdots & \frac{-1}{m+1} \\
+\vdots & \vdots & \ddots & \vdots\\
+\frac{-1}{m+1} & \frac{-1}{m+1} & \cdots & \frac{m}{m+1} \\
+\end{pmatrix}
+\begin{pmatrix}
+\frac{\omega^1 - a_i}{b_i} \\ \frac{\omega^2 - a_i}{b_i} \\ \vdots \\ \frac{\omega^m - a_i}{b_i}
+\end{pmatrix}
+\end{equation*}
+
+Для экономии времени и места обозначим $\xi_i^j = \frac{\omega^j - a_i}{b_i}$.
+
+\begin{equation*}
+f_i^j = \xi_i^j - \frac{1}{m+1} \sum\limits_{q=1}^m \xi_i^q
+\end{equation*}
+
+\begin{equation}
+F^j = \sum\limits f_i^j = \sum\limits_{i=1}^n \xi_i^j - \frac{1}{m+1} \sum\limits_{i=1}^n \sum\limits_{q=1}^m \xi_i^q
+\end{equation}
+
+\begin{equation*}
+\begin{pmatrix}
+F^1 \\ F^2 \\ \vdots\\ F^m 
+\end{pmatrix} 
+=
+\begin{pmatrix}
+\frac{m}{m+1} & \frac{-1}{m+1} & \cdots & \frac{-1}{m+1} \\
+\frac{-1}{m+1} & \frac{m}{m+1} & \cdots & \frac{-1}{m+1} \\
+\vdots & \vdots & \ddots & \vdots\\
+\frac{-1}{m+1} & \frac{-1}{m+1} & \cdots & \frac{m}{m+1} \\
+\end{pmatrix}
+\begin{pmatrix}
+\sum\limits_{i=1}^n \xi_i^1 \\ \sum\limits_{i=1}^n \xi_i^2 \\ \vdots \\ \sum\limits_{i=1}^n \xi_i^m
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+\begin{pmatrix}
+\sum\limits_{i=1}^n \xi_i^1 \\ \sum\limits_{i=1}^n \xi_i^2 \\ \vdots \\ \sum\limits_{i=1}^n \xi_i^m
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 & 1 & \cdots & 1\\
+1 & 2 & \cdots & 1\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & 1 & \cdots & 2 
+\end{pmatrix}
+\begin{pmatrix}
+F^1 \\ F^2 \\ \vdots\\ F^m 
+\end{pmatrix}
+\end{equation*}
+Отсюда
+
+\begin{equation*}
+\sum\limits_{i=1}^n\xi_i^j = F^1 + \dots + 2F^j+ \dots + F^m
+\end{equation*}
+
+\begin{equation*}
+\sum\limits_{i=1}^n\frac{\omega^j - a_i}{b_i} = F^j + \sum\limits_{i=1}^m F^i
+\end{equation*}
+
+\begin{equation*}
+\omega^j = \frac{F^j + \sum\limits_{i=1}^m F^i + \sum\limits_{i=1}^n  \frac{a_i}{b_i}}{\sum\limits_{i=1}^n \frac{1}{b_i}}
+\end{equation*}
+
+\begin{equation*}
+\xi_i^j = \frac{1}{b_i}\frac{F^j + \sum\limits_{q=1}^m F^q + \sum\limits_{s=1}^n \frac{a_s}{b_s}}{\sum\limits_{s=1}^n \frac{1}{b_s}} - \frac{a_i}{b_i}
+\end{equation*}
+
+Если $m=1$, то
+\begin{equation*}
+f_i^j = \frac{1}{b_i}\frac{F+ \frac{1}{2}\sum\limits_{s=1}^n \frac{a_s}{b_s}}{\sum\limits_{s=1}^n\frac{1}{b_s}} + \frac{1}{2}\frac{a_i}{b_i}
+\end{equation*}
+
+\begin{equation*}
+T^{u \varepsilon}(f_i) = \sum\limits_{i=1}^n \int\limits_0^{f_i} t_i(u)du
+\end{equation*}
+
+\begin{equation*}
+T^{so}(f_i) = \sum\limits_{i=1}^n t_i(f_i)f_i
+\end{equation*}
+
+
+\begin{equation*}
+T_m^{n \varepsilon}(f_i) = \sum\limits_{j=1}^m \sum\limits_{i=1}^n t_i(f_i)f_i^j
+\end{equation*}
+
+\begin{equation*}
+T^{so} \leq T_m^{n \varepsilon} \leq T^{u \varepsilon}
+\end{equation*}
+
+\begin{equation*}
+T^{so} = T_1^{n \varepsilon} \leq T_2^{n \varepsilon} \leq \dots \leq T_{|F|}^{n \varepsilon} 
+= T_{\infty}^{n \varepsilon} = T^{u \varepsilon} [!!!!!!!!!!!!]
+\end{equation*}
 
 \chapter{Нелинейное программирование))))))}
+
+
+\chapter{Рекомендуемая литература}
+
+\begin{enumerate}
+\item <<Новое индустриальное общество>>, Джон Кеннет Гэлбрейт
+\end{enumerate}
 \end{document}
